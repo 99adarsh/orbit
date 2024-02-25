@@ -1,0 +1,60 @@
+syntax = "proto3";
+package orbit.split;
+
+import "amino/amino.proto";
+import "cosmos/msg/v1/msg.proto";
+import "cosmos_proto/cosmos.proto";
+import "cosmos/base/v1beta1/coin.proto";
+import "gogoproto/gogo.proto";
+import "orbit/split/params.proto";
+
+option go_package = "github.com/99adarsh/orbit/x/split/types";
+
+// Msg defines the Msg service.
+service Msg {
+  option (cosmos.msg.v1.service) = true;
+
+  // UpdateParams defines a (governance) operation for updating the module
+  // parameters. The authority defaults to the x/gov module account.
+  rpc UpdateParams(MsgUpdateParams) returns (MsgUpdateParamsResponse);
+
+  // CreateSplitterPool tx will create a pool which store the lsd and returns yield and principle tokens
+  rpc CreateSplitterPool(MsgCreateSplitterPool) returns (MsgCreateSplitterPoolResponse);
+}
+
+/*
+ sender: pool creater
+ staked_asset: liquid staking derivative needs to split into yield and principle token
+ maturity: maturity of the pool in blockheight 
+*/
+message MsgCreateSplitterPool {
+  string sender = 1;
+  cosmos.base.v1beta1.Coin staked_asset = 2;
+  uint64 maturity = 3;
+}
+
+message MsgCreateSplitterPoolResponse {
+  uint64 pool_id = 1;
+}
+
+
+// MsgUpdateParams is the Msg/UpdateParams request type.
+message MsgUpdateParams {
+  option (cosmos.msg.v1.signer) = "authority";
+  option (amino.name) = "orbit/x/split/MsgUpdateParams";
+
+  // authority is the address that controls the module (defaults to x/gov unless overwritten).
+  string authority = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+
+  // params defines the module parameters to update.
+  //
+  // NOTE: All parameters must be supplied.
+  Params params = 2 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
+
+// MsgUpdateParamsResponse defines the response structure for executing a
+// MsgUpdateParams message.
+message MsgUpdateParamsResponse {}

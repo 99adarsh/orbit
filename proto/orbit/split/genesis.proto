@@ -1,0 +1,17 @@
+syntax = "proto3";
+package orbit.split;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "orbit/split/params.proto";
+
+option go_package = "github.com/99adarsh/orbit/x/split/types";
+
+// GenesisState defines the split module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+package orbit.split;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/99adarsh/orbit/x/split/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "orbit/x/split/Params";
+  option (gogoproto.equal) = true;
+
+  
+}
