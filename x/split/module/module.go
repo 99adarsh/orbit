@@ -16,6 +16,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
+	ibckeeper "github.com/cosmos/ibc-go/v8/modules/core/keeper"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 
 	// this line is used by starport scaffolding # 1
@@ -116,7 +117,7 @@ func NewAppModule(
 
 // RegisterServices registers a gRPC query service to respond to the module-specific gRPC queries
 func (am AppModule) RegisterServices(cfg module.Configurator) {
-	types.RegisterMsgServer(cfg.MsgServer(), keeper.NewMsgServerImpl(am.keeper))
+	types.RegisterMsgServer(cfg.MsgServer(), keeper.NewSplitterMsgServerImpl(am.keeper))
 	types.RegisterQueryServer(cfg.QueryServer(), am.keeper)
 }
 
@@ -180,8 +181,10 @@ type ModuleInputs struct {
 	Config       *modulev1.Module
 	Logger       log.Logger
 
-	AccountKeeper types.AccountKeeper
-	BankKeeper    types.BankKeeper
+	AccountKeeper       types.AccountKeeper
+	BankKeeper          types.BankKeeper
+	IBCKeeper           ibckeeper.Keeper
+	IcaControllerKeeper types.ICAControllerKeeper
 }
 
 type ModuleOutputs struct {
@@ -203,6 +206,9 @@ func ProvideModule(in ModuleInputs) ModuleOutputs {
 		in.Logger,
 		authority.String(),
 		in.BankKeeper,
+		in.IBCKeeper,
+		in.AccountKeeper,
+		in.IcaControllerKeeper,
 	)
 	m := NewAppModule(
 		in.Cdc,

@@ -8,7 +8,6 @@ package split
 
 import (
 	context "context"
-
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -20,7 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Msg_UpdateParams_FullMethodName = "/orbit.split.Msg/UpdateParams"
+	Msg_UpdateParams_FullMethodName                 = "/orbit.split.Msg/UpdateParams"
+	Msg_CreateSplitterPool_FullMethodName           = "/orbit.split.Msg/CreateSplitterPool"
+	Msg_UpdateSplitterPoolIcaAccount_FullMethodName = "/orbit.split.Msg/UpdateSplitterPoolIcaAccount"
 )
 
 // MsgClient is the client API for Msg service.
@@ -30,6 +31,10 @@ type MsgClient interface {
 	// UpdateParams defines a (governance) operation for updating the module
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(ctx context.Context, in *MsgUpdateParams, opts ...grpc.CallOption) (*MsgUpdateParamsResponse, error)
+	// CreateSplitterPool tx will create a pool which store the lsd and returns yield and principle tokens
+	CreateSplitterPool(ctx context.Context, in *MsgCreateSplitterPool, opts ...grpc.CallOption) (*MsgCreateSplitterPoolResponse, error)
+	// query the
+	UpdateSplitterPoolIcaAccount(ctx context.Context, in *MsgUpdateplitterPoolAccount, opts ...grpc.CallOption) (*MsgUpdateplitterPoolAccountResponse, error)
 }
 
 type msgClient struct {
@@ -49,6 +54,24 @@ func (c *msgClient) UpdateParams(ctx context.Context, in *MsgUpdateParams, opts 
 	return out, nil
 }
 
+func (c *msgClient) CreateSplitterPool(ctx context.Context, in *MsgCreateSplitterPool, opts ...grpc.CallOption) (*MsgCreateSplitterPoolResponse, error) {
+	out := new(MsgCreateSplitterPoolResponse)
+	err := c.cc.Invoke(ctx, Msg_CreateSplitterPool_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) UpdateSplitterPoolIcaAccount(ctx context.Context, in *MsgUpdateplitterPoolAccount, opts ...grpc.CallOption) (*MsgUpdateplitterPoolAccountResponse, error) {
+	out := new(MsgUpdateplitterPoolAccountResponse)
+	err := c.cc.Invoke(ctx, Msg_UpdateSplitterPoolIcaAccount_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 // All implementations must embed UnimplementedMsgServer
 // for forward compatibility
@@ -56,6 +79,10 @@ type MsgServer interface {
 	// UpdateParams defines a (governance) operation for updating the module
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error)
+	// CreateSplitterPool tx will create a pool which store the lsd and returns yield and principle tokens
+	CreateSplitterPool(context.Context, *MsgCreateSplitterPool) (*MsgCreateSplitterPoolResponse, error)
+	// query the
+	UpdateSplitterPoolIcaAccount(context.Context, *MsgUpdateplitterPoolAccount) (*MsgUpdateplitterPoolAccountResponse, error)
 	mustEmbedUnimplementedMsgServer()
 }
 
@@ -65,6 +92,12 @@ type UnimplementedMsgServer struct {
 
 func (UnimplementedMsgServer) UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateParams not implemented")
+}
+func (UnimplementedMsgServer) CreateSplitterPool(context.Context, *MsgCreateSplitterPool) (*MsgCreateSplitterPoolResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateSplitterPool not implemented")
+}
+func (UnimplementedMsgServer) UpdateSplitterPoolIcaAccount(context.Context, *MsgUpdateplitterPoolAccount) (*MsgUpdateplitterPoolAccountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateSplitterPoolIcaAccount not implemented")
 }
 func (UnimplementedMsgServer) mustEmbedUnimplementedMsgServer() {}
 
@@ -97,6 +130,42 @@ func _Msg_UpdateParams_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_CreateSplitterPool_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCreateSplitterPool)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).CreateSplitterPool(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_CreateSplitterPool_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).CreateSplitterPool(ctx, req.(*MsgCreateSplitterPool))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_UpdateSplitterPoolIcaAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgUpdateplitterPoolAccount)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).UpdateSplitterPoolIcaAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_UpdateSplitterPoolIcaAccount_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).UpdateSplitterPoolIcaAccount(ctx, req.(*MsgUpdateplitterPoolAccount))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Msg_ServiceDesc is the grpc.ServiceDesc for Msg service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -107,6 +176,14 @@ var Msg_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateParams",
 			Handler:    _Msg_UpdateParams_Handler,
+		},
+		{
+			MethodName: "CreateSplitterPool",
+			Handler:    _Msg_CreateSplitterPool_Handler,
+		},
+		{
+			MethodName: "UpdateSplitterPoolIcaAccount",
+			Handler:    _Msg_UpdateSplitterPoolIcaAccount_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

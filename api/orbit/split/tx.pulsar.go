@@ -2,20 +2,2100 @@
 package split
 
 import (
-	fmt "fmt"
-	io "io"
-	reflect "reflect"
-	sync "sync"
-
 	_ "cosmossdk.io/api/amino"
+	_ "cosmossdk.io/api/cosmos/base/v1beta1"
 	_ "cosmossdk.io/api/cosmos/msg/v1"
+	fmt "fmt"
 	_ "github.com/cosmos/cosmos-proto"
 	runtime "github.com/cosmos/cosmos-proto/runtime"
 	_ "github.com/cosmos/gogoproto/gogoproto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoiface "google.golang.org/protobuf/runtime/protoiface"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	io "io"
+	reflect "reflect"
+	sync "sync"
 )
+
+var (
+	md_MsgCreateSplitterPool                     protoreflect.MessageDescriptor
+	fd_MsgCreateSplitterPool_creator             protoreflect.FieldDescriptor
+	fd_MsgCreateSplitterPool_maturity            protoreflect.FieldDescriptor
+	fd_MsgCreateSplitterPool_ibc_denom           protoreflect.FieldDescriptor
+	fd_MsgCreateSplitterPool_host_denom          protoreflect.FieldDescriptor
+	fd_MsgCreateSplitterPool_connection_id       protoreflect.FieldDescriptor
+	fd_MsgCreateSplitterPool_transfer_channel_id protoreflect.FieldDescriptor
+)
+
+func init() {
+	file_orbit_split_tx_proto_init()
+	md_MsgCreateSplitterPool = File_orbit_split_tx_proto.Messages().ByName("MsgCreateSplitterPool")
+	fd_MsgCreateSplitterPool_creator = md_MsgCreateSplitterPool.Fields().ByName("creator")
+	fd_MsgCreateSplitterPool_maturity = md_MsgCreateSplitterPool.Fields().ByName("maturity")
+	fd_MsgCreateSplitterPool_ibc_denom = md_MsgCreateSplitterPool.Fields().ByName("ibc_denom")
+	fd_MsgCreateSplitterPool_host_denom = md_MsgCreateSplitterPool.Fields().ByName("host_denom")
+	fd_MsgCreateSplitterPool_connection_id = md_MsgCreateSplitterPool.Fields().ByName("connection_id")
+	fd_MsgCreateSplitterPool_transfer_channel_id = md_MsgCreateSplitterPool.Fields().ByName("transfer_channel_id")
+}
+
+var _ protoreflect.Message = (*fastReflection_MsgCreateSplitterPool)(nil)
+
+type fastReflection_MsgCreateSplitterPool MsgCreateSplitterPool
+
+func (x *MsgCreateSplitterPool) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgCreateSplitterPool)(x)
+}
+
+func (x *MsgCreateSplitterPool) slowProtoReflect() protoreflect.Message {
+	mi := &file_orbit_split_tx_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+var _fastReflection_MsgCreateSplitterPool_messageType fastReflection_MsgCreateSplitterPool_messageType
+var _ protoreflect.MessageType = fastReflection_MsgCreateSplitterPool_messageType{}
+
+type fastReflection_MsgCreateSplitterPool_messageType struct{}
+
+func (x fastReflection_MsgCreateSplitterPool_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgCreateSplitterPool)(nil)
+}
+func (x fastReflection_MsgCreateSplitterPool_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgCreateSplitterPool)
+}
+func (x fastReflection_MsgCreateSplitterPool_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgCreateSplitterPool
+}
+
+// Descriptor returns message descriptor, which contains only the protobuf
+// type information for the message.
+func (x *fastReflection_MsgCreateSplitterPool) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgCreateSplitterPool
+}
+
+// Type returns the message type, which encapsulates both Go and protobuf
+// type information. If the Go type information is not needed,
+// it is recommended that the message descriptor be used instead.
+func (x *fastReflection_MsgCreateSplitterPool) Type() protoreflect.MessageType {
+	return _fastReflection_MsgCreateSplitterPool_messageType
+}
+
+// New returns a newly allocated and mutable empty message.
+func (x *fastReflection_MsgCreateSplitterPool) New() protoreflect.Message {
+	return new(fastReflection_MsgCreateSplitterPool)
+}
+
+// Interface unwraps the message reflection interface and
+// returns the underlying ProtoMessage interface.
+func (x *fastReflection_MsgCreateSplitterPool) Interface() protoreflect.ProtoMessage {
+	return (*MsgCreateSplitterPool)(x)
+}
+
+// Range iterates over every populated field in an undefined order,
+// calling f for each field descriptor and value encountered.
+// Range returns immediately if f returns false.
+// While iterating, mutating operations may only be performed
+// on the current field descriptor.
+func (x *fastReflection_MsgCreateSplitterPool) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.Creator != "" {
+		value := protoreflect.ValueOfString(x.Creator)
+		if !f(fd_MsgCreateSplitterPool_creator, value) {
+			return
+		}
+	}
+	if x.Maturity != uint64(0) {
+		value := protoreflect.ValueOfUint64(x.Maturity)
+		if !f(fd_MsgCreateSplitterPool_maturity, value) {
+			return
+		}
+	}
+	if x.IbcDenom != "" {
+		value := protoreflect.ValueOfString(x.IbcDenom)
+		if !f(fd_MsgCreateSplitterPool_ibc_denom, value) {
+			return
+		}
+	}
+	if x.HostDenom != "" {
+		value := protoreflect.ValueOfString(x.HostDenom)
+		if !f(fd_MsgCreateSplitterPool_host_denom, value) {
+			return
+		}
+	}
+	if x.ConnectionId != "" {
+		value := protoreflect.ValueOfString(x.ConnectionId)
+		if !f(fd_MsgCreateSplitterPool_connection_id, value) {
+			return
+		}
+	}
+	if x.TransferChannelId != "" {
+		value := protoreflect.ValueOfString(x.TransferChannelId)
+		if !f(fd_MsgCreateSplitterPool_transfer_channel_id, value) {
+			return
+		}
+	}
+}
+
+// Has reports whether a field is populated.
+//
+// Some fields have the property of nullability where it is possible to
+// distinguish between the default value of a field and whether the field
+// was explicitly populated with the default value. Singular message fields,
+// member fields of a oneof, and proto2 scalar fields are nullable. Such
+// fields are populated only if explicitly set.
+//
+// In other cases (aside from the nullable cases above),
+// a proto3 scalar field is populated if it contains a non-zero value, and
+// a repeated field is populated if it is non-empty.
+func (x *fastReflection_MsgCreateSplitterPool) Has(fd protoreflect.FieldDescriptor) bool {
+	switch fd.FullName() {
+	case "orbit.split.MsgCreateSplitterPool.creator":
+		return x.Creator != ""
+	case "orbit.split.MsgCreateSplitterPool.maturity":
+		return x.Maturity != uint64(0)
+	case "orbit.split.MsgCreateSplitterPool.ibc_denom":
+		return x.IbcDenom != ""
+	case "orbit.split.MsgCreateSplitterPool.host_denom":
+		return x.HostDenom != ""
+	case "orbit.split.MsgCreateSplitterPool.connection_id":
+		return x.ConnectionId != ""
+	case "orbit.split.MsgCreateSplitterPool.transfer_channel_id":
+		return x.TransferChannelId != ""
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgCreateSplitterPool"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgCreateSplitterPool does not contain field %s", fd.FullName()))
+	}
+}
+
+// Clear clears the field such that a subsequent Has call reports false.
+//
+// Clearing an extension field clears both the extension type and value
+// associated with the given field number.
+//
+// Clear is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgCreateSplitterPool) Clear(fd protoreflect.FieldDescriptor) {
+	switch fd.FullName() {
+	case "orbit.split.MsgCreateSplitterPool.creator":
+		x.Creator = ""
+	case "orbit.split.MsgCreateSplitterPool.maturity":
+		x.Maturity = uint64(0)
+	case "orbit.split.MsgCreateSplitterPool.ibc_denom":
+		x.IbcDenom = ""
+	case "orbit.split.MsgCreateSplitterPool.host_denom":
+		x.HostDenom = ""
+	case "orbit.split.MsgCreateSplitterPool.connection_id":
+		x.ConnectionId = ""
+	case "orbit.split.MsgCreateSplitterPool.transfer_channel_id":
+		x.TransferChannelId = ""
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgCreateSplitterPool"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgCreateSplitterPool does not contain field %s", fd.FullName()))
+	}
+}
+
+// Get retrieves the value for a field.
+//
+// For unpopulated scalars, it returns the default value, where
+// the default value of a bytes scalar is guaranteed to be a copy.
+// For unpopulated composite types, it returns an empty, read-only view
+// of the value; to obtain a mutable reference, use Mutable.
+func (x *fastReflection_MsgCreateSplitterPool) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+	switch descriptor.FullName() {
+	case "orbit.split.MsgCreateSplitterPool.creator":
+		value := x.Creator
+		return protoreflect.ValueOfString(value)
+	case "orbit.split.MsgCreateSplitterPool.maturity":
+		value := x.Maturity
+		return protoreflect.ValueOfUint64(value)
+	case "orbit.split.MsgCreateSplitterPool.ibc_denom":
+		value := x.IbcDenom
+		return protoreflect.ValueOfString(value)
+	case "orbit.split.MsgCreateSplitterPool.host_denom":
+		value := x.HostDenom
+		return protoreflect.ValueOfString(value)
+	case "orbit.split.MsgCreateSplitterPool.connection_id":
+		value := x.ConnectionId
+		return protoreflect.ValueOfString(value)
+	case "orbit.split.MsgCreateSplitterPool.transfer_channel_id":
+		value := x.TransferChannelId
+		return protoreflect.ValueOfString(value)
+	default:
+		if descriptor.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgCreateSplitterPool"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgCreateSplitterPool does not contain field %s", descriptor.FullName()))
+	}
+}
+
+// Set stores the value for a field.
+//
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType.
+// When setting a composite type, it is unspecified whether the stored value
+// aliases the source's memory in any way. If the composite value is an
+// empty, read-only value, then it panics.
+//
+// Set is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgCreateSplitterPool) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+	switch fd.FullName() {
+	case "orbit.split.MsgCreateSplitterPool.creator":
+		x.Creator = value.Interface().(string)
+	case "orbit.split.MsgCreateSplitterPool.maturity":
+		x.Maturity = value.Uint()
+	case "orbit.split.MsgCreateSplitterPool.ibc_denom":
+		x.IbcDenom = value.Interface().(string)
+	case "orbit.split.MsgCreateSplitterPool.host_denom":
+		x.HostDenom = value.Interface().(string)
+	case "orbit.split.MsgCreateSplitterPool.connection_id":
+		x.ConnectionId = value.Interface().(string)
+	case "orbit.split.MsgCreateSplitterPool.transfer_channel_id":
+		x.TransferChannelId = value.Interface().(string)
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgCreateSplitterPool"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgCreateSplitterPool does not contain field %s", fd.FullName()))
+	}
+}
+
+// Mutable returns a mutable reference to a composite type.
+//
+// If the field is unpopulated, it may allocate a composite value.
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType
+// if not already stored.
+// It panics if the field does not contain a composite type.
+//
+// Mutable is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgCreateSplitterPool) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "orbit.split.MsgCreateSplitterPool.creator":
+		panic(fmt.Errorf("field creator of message orbit.split.MsgCreateSplitterPool is not mutable"))
+	case "orbit.split.MsgCreateSplitterPool.maturity":
+		panic(fmt.Errorf("field maturity of message orbit.split.MsgCreateSplitterPool is not mutable"))
+	case "orbit.split.MsgCreateSplitterPool.ibc_denom":
+		panic(fmt.Errorf("field ibc_denom of message orbit.split.MsgCreateSplitterPool is not mutable"))
+	case "orbit.split.MsgCreateSplitterPool.host_denom":
+		panic(fmt.Errorf("field host_denom of message orbit.split.MsgCreateSplitterPool is not mutable"))
+	case "orbit.split.MsgCreateSplitterPool.connection_id":
+		panic(fmt.Errorf("field connection_id of message orbit.split.MsgCreateSplitterPool is not mutable"))
+	case "orbit.split.MsgCreateSplitterPool.transfer_channel_id":
+		panic(fmt.Errorf("field transfer_channel_id of message orbit.split.MsgCreateSplitterPool is not mutable"))
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgCreateSplitterPool"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgCreateSplitterPool does not contain field %s", fd.FullName()))
+	}
+}
+
+// NewField returns a new value that is assignable to the field
+// for the given descriptor. For scalars, this returns the default value.
+// For lists, maps, and messages, this returns a new, empty, mutable value.
+func (x *fastReflection_MsgCreateSplitterPool) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "orbit.split.MsgCreateSplitterPool.creator":
+		return protoreflect.ValueOfString("")
+	case "orbit.split.MsgCreateSplitterPool.maturity":
+		return protoreflect.ValueOfUint64(uint64(0))
+	case "orbit.split.MsgCreateSplitterPool.ibc_denom":
+		return protoreflect.ValueOfString("")
+	case "orbit.split.MsgCreateSplitterPool.host_denom":
+		return protoreflect.ValueOfString("")
+	case "orbit.split.MsgCreateSplitterPool.connection_id":
+		return protoreflect.ValueOfString("")
+	case "orbit.split.MsgCreateSplitterPool.transfer_channel_id":
+		return protoreflect.ValueOfString("")
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgCreateSplitterPool"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgCreateSplitterPool does not contain field %s", fd.FullName()))
+	}
+}
+
+// WhichOneof reports which field within the oneof is populated,
+// returning nil if none are populated.
+// It panics if the oneof descriptor does not belong to this message.
+func (x *fastReflection_MsgCreateSplitterPool) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+	switch d.FullName() {
+	default:
+		panic(fmt.Errorf("%s is not a oneof field in orbit.split.MsgCreateSplitterPool", d.FullName()))
+	}
+	panic("unreachable")
+}
+
+// GetUnknown retrieves the entire list of unknown fields.
+// The caller may only mutate the contents of the RawFields
+// if the mutated bytes are stored back into the message with SetUnknown.
+func (x *fastReflection_MsgCreateSplitterPool) GetUnknown() protoreflect.RawFields {
+	return x.unknownFields
+}
+
+// SetUnknown stores an entire list of unknown fields.
+// The raw fields must be syntactically valid according to the wire format.
+// An implementation may panic if this is not the case.
+// Once stored, the caller must not mutate the content of the RawFields.
+// An empty RawFields may be passed to clear the fields.
+//
+// SetUnknown is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgCreateSplitterPool) SetUnknown(fields protoreflect.RawFields) {
+	x.unknownFields = fields
+}
+
+// IsValid reports whether the message is valid.
+//
+// An invalid message is an empty, read-only value.
+//
+// An invalid message often corresponds to a nil pointer of the concrete
+// message type, but the details are implementation dependent.
+// Validity is not part of the protobuf data model, and may not
+// be preserved in marshaling or other operations.
+func (x *fastReflection_MsgCreateSplitterPool) IsValid() bool {
+	return x != nil
+}
+
+// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
+// This method may return nil.
+//
+// The returned methods type is identical to
+// "google.golang.org/protobuf/runtime/protoiface".Methods.
+// Consult the protoiface package documentation for details.
+func (x *fastReflection_MsgCreateSplitterPool) ProtoMethods() *protoiface.Methods {
+	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
+		x := input.Message.Interface().(*MsgCreateSplitterPool)
+		if x == nil {
+			return protoiface.SizeOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Size:              0,
+			}
+		}
+		options := runtime.SizeInputToOptions(input)
+		_ = options
+		var n int
+		var l int
+		_ = l
+		l = len(x.Creator)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		if x.Maturity != 0 {
+			n += 1 + runtime.Sov(uint64(x.Maturity))
+		}
+		l = len(x.IbcDenom)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		l = len(x.HostDenom)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		l = len(x.ConnectionId)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		l = len(x.TransferChannelId)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		if x.unknownFields != nil {
+			n += len(x.unknownFields)
+		}
+		return protoiface.SizeOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Size:              n,
+		}
+	}
+
+	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
+		x := input.Message.Interface().(*MsgCreateSplitterPool)
+		if x == nil {
+			return protoiface.MarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Buf:               input.Buf,
+			}, nil
+		}
+		options := runtime.MarshalInputToOptions(input)
+		_ = options
+		size := options.Size(x)
+		dAtA := make([]byte, size)
+		i := len(dAtA)
+		_ = i
+		var l int
+		_ = l
+		if x.unknownFields != nil {
+			i -= len(x.unknownFields)
+			copy(dAtA[i:], x.unknownFields)
+		}
+		if len(x.TransferChannelId) > 0 {
+			i -= len(x.TransferChannelId)
+			copy(dAtA[i:], x.TransferChannelId)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.TransferChannelId)))
+			i--
+			dAtA[i] = 0x32
+		}
+		if len(x.ConnectionId) > 0 {
+			i -= len(x.ConnectionId)
+			copy(dAtA[i:], x.ConnectionId)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.ConnectionId)))
+			i--
+			dAtA[i] = 0x2a
+		}
+		if len(x.HostDenom) > 0 {
+			i -= len(x.HostDenom)
+			copy(dAtA[i:], x.HostDenom)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.HostDenom)))
+			i--
+			dAtA[i] = 0x22
+		}
+		if len(x.IbcDenom) > 0 {
+			i -= len(x.IbcDenom)
+			copy(dAtA[i:], x.IbcDenom)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.IbcDenom)))
+			i--
+			dAtA[i] = 0x1a
+		}
+		if x.Maturity != 0 {
+			i = runtime.EncodeVarint(dAtA, i, uint64(x.Maturity))
+			i--
+			dAtA[i] = 0x10
+		}
+		if len(x.Creator) > 0 {
+			i -= len(x.Creator)
+			copy(dAtA[i:], x.Creator)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Creator)))
+			i--
+			dAtA[i] = 0xa
+		}
+		if input.Buf != nil {
+			input.Buf = append(input.Buf, dAtA...)
+		} else {
+			input.Buf = dAtA
+		}
+		return protoiface.MarshalOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Buf:               input.Buf,
+		}, nil
+	}
+	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
+		x := input.Message.Interface().(*MsgCreateSplitterPool)
+		if x == nil {
+			return protoiface.UnmarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Flags:             input.Flags,
+			}, nil
+		}
+		options := runtime.UnmarshalInputToOptions(input)
+		_ = options
+		dAtA := input.Buf
+		l := len(dAtA)
+		iNdEx := 0
+		for iNdEx < l {
+			preIndex := iNdEx
+			var wire uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				wire |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			fieldNum := int32(wire >> 3)
+			wireType := int(wire & 0x7)
+			if wireType == 4 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgCreateSplitterPool: wiretype end group for non-group")
+			}
+			if fieldNum <= 0 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgCreateSplitterPool: illegal tag %d (wire type %d)", fieldNum, wire)
+			}
+			switch fieldNum {
+			case 1:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Creator = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 2:
+				if wireType != 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Maturity", wireType)
+				}
+				x.Maturity = 0
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					x.Maturity |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+			case 3:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field IbcDenom", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.IbcDenom = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 4:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field HostDenom", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.HostDenom = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 5:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field ConnectionId", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.ConnectionId = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 6:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field TransferChannelId", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.TransferChannelId = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			default:
+				iNdEx = preIndex
+				skippy, err := runtime.Skip(dAtA[iNdEx:])
+				if err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				if (skippy < 0) || (iNdEx+skippy) < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if (iNdEx + skippy) > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if !options.DiscardUnknown {
+					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
+				}
+				iNdEx += skippy
+			}
+		}
+
+		if iNdEx > l {
+			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+		}
+		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
+	}
+	return &protoiface.Methods{
+		NoUnkeyedLiterals: struct{}{},
+		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
+		Size:              size,
+		Marshal:           marshal,
+		Unmarshal:         unmarshal,
+		Merge:             nil,
+		CheckInitialized:  nil,
+	}
+}
+
+var (
+	md_MsgCreateSplitterPoolResponse         protoreflect.MessageDescriptor
+	fd_MsgCreateSplitterPoolResponse_pool_id protoreflect.FieldDescriptor
+)
+
+func init() {
+	file_orbit_split_tx_proto_init()
+	md_MsgCreateSplitterPoolResponse = File_orbit_split_tx_proto.Messages().ByName("MsgCreateSplitterPoolResponse")
+	fd_MsgCreateSplitterPoolResponse_pool_id = md_MsgCreateSplitterPoolResponse.Fields().ByName("pool_id")
+}
+
+var _ protoreflect.Message = (*fastReflection_MsgCreateSplitterPoolResponse)(nil)
+
+type fastReflection_MsgCreateSplitterPoolResponse MsgCreateSplitterPoolResponse
+
+func (x *MsgCreateSplitterPoolResponse) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgCreateSplitterPoolResponse)(x)
+}
+
+func (x *MsgCreateSplitterPoolResponse) slowProtoReflect() protoreflect.Message {
+	mi := &file_orbit_split_tx_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+var _fastReflection_MsgCreateSplitterPoolResponse_messageType fastReflection_MsgCreateSplitterPoolResponse_messageType
+var _ protoreflect.MessageType = fastReflection_MsgCreateSplitterPoolResponse_messageType{}
+
+type fastReflection_MsgCreateSplitterPoolResponse_messageType struct{}
+
+func (x fastReflection_MsgCreateSplitterPoolResponse_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgCreateSplitterPoolResponse)(nil)
+}
+func (x fastReflection_MsgCreateSplitterPoolResponse_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgCreateSplitterPoolResponse)
+}
+func (x fastReflection_MsgCreateSplitterPoolResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgCreateSplitterPoolResponse
+}
+
+// Descriptor returns message descriptor, which contains only the protobuf
+// type information for the message.
+func (x *fastReflection_MsgCreateSplitterPoolResponse) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgCreateSplitterPoolResponse
+}
+
+// Type returns the message type, which encapsulates both Go and protobuf
+// type information. If the Go type information is not needed,
+// it is recommended that the message descriptor be used instead.
+func (x *fastReflection_MsgCreateSplitterPoolResponse) Type() protoreflect.MessageType {
+	return _fastReflection_MsgCreateSplitterPoolResponse_messageType
+}
+
+// New returns a newly allocated and mutable empty message.
+func (x *fastReflection_MsgCreateSplitterPoolResponse) New() protoreflect.Message {
+	return new(fastReflection_MsgCreateSplitterPoolResponse)
+}
+
+// Interface unwraps the message reflection interface and
+// returns the underlying ProtoMessage interface.
+func (x *fastReflection_MsgCreateSplitterPoolResponse) Interface() protoreflect.ProtoMessage {
+	return (*MsgCreateSplitterPoolResponse)(x)
+}
+
+// Range iterates over every populated field in an undefined order,
+// calling f for each field descriptor and value encountered.
+// Range returns immediately if f returns false.
+// While iterating, mutating operations may only be performed
+// on the current field descriptor.
+func (x *fastReflection_MsgCreateSplitterPoolResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.PoolId != uint64(0) {
+		value := protoreflect.ValueOfUint64(x.PoolId)
+		if !f(fd_MsgCreateSplitterPoolResponse_pool_id, value) {
+			return
+		}
+	}
+}
+
+// Has reports whether a field is populated.
+//
+// Some fields have the property of nullability where it is possible to
+// distinguish between the default value of a field and whether the field
+// was explicitly populated with the default value. Singular message fields,
+// member fields of a oneof, and proto2 scalar fields are nullable. Such
+// fields are populated only if explicitly set.
+//
+// In other cases (aside from the nullable cases above),
+// a proto3 scalar field is populated if it contains a non-zero value, and
+// a repeated field is populated if it is non-empty.
+func (x *fastReflection_MsgCreateSplitterPoolResponse) Has(fd protoreflect.FieldDescriptor) bool {
+	switch fd.FullName() {
+	case "orbit.split.MsgCreateSplitterPoolResponse.pool_id":
+		return x.PoolId != uint64(0)
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgCreateSplitterPoolResponse"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgCreateSplitterPoolResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Clear clears the field such that a subsequent Has call reports false.
+//
+// Clearing an extension field clears both the extension type and value
+// associated with the given field number.
+//
+// Clear is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgCreateSplitterPoolResponse) Clear(fd protoreflect.FieldDescriptor) {
+	switch fd.FullName() {
+	case "orbit.split.MsgCreateSplitterPoolResponse.pool_id":
+		x.PoolId = uint64(0)
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgCreateSplitterPoolResponse"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgCreateSplitterPoolResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Get retrieves the value for a field.
+//
+// For unpopulated scalars, it returns the default value, where
+// the default value of a bytes scalar is guaranteed to be a copy.
+// For unpopulated composite types, it returns an empty, read-only view
+// of the value; to obtain a mutable reference, use Mutable.
+func (x *fastReflection_MsgCreateSplitterPoolResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+	switch descriptor.FullName() {
+	case "orbit.split.MsgCreateSplitterPoolResponse.pool_id":
+		value := x.PoolId
+		return protoreflect.ValueOfUint64(value)
+	default:
+		if descriptor.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgCreateSplitterPoolResponse"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgCreateSplitterPoolResponse does not contain field %s", descriptor.FullName()))
+	}
+}
+
+// Set stores the value for a field.
+//
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType.
+// When setting a composite type, it is unspecified whether the stored value
+// aliases the source's memory in any way. If the composite value is an
+// empty, read-only value, then it panics.
+//
+// Set is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgCreateSplitterPoolResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+	switch fd.FullName() {
+	case "orbit.split.MsgCreateSplitterPoolResponse.pool_id":
+		x.PoolId = value.Uint()
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgCreateSplitterPoolResponse"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgCreateSplitterPoolResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Mutable returns a mutable reference to a composite type.
+//
+// If the field is unpopulated, it may allocate a composite value.
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType
+// if not already stored.
+// It panics if the field does not contain a composite type.
+//
+// Mutable is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgCreateSplitterPoolResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "orbit.split.MsgCreateSplitterPoolResponse.pool_id":
+		panic(fmt.Errorf("field pool_id of message orbit.split.MsgCreateSplitterPoolResponse is not mutable"))
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgCreateSplitterPoolResponse"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgCreateSplitterPoolResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// NewField returns a new value that is assignable to the field
+// for the given descriptor. For scalars, this returns the default value.
+// For lists, maps, and messages, this returns a new, empty, mutable value.
+func (x *fastReflection_MsgCreateSplitterPoolResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "orbit.split.MsgCreateSplitterPoolResponse.pool_id":
+		return protoreflect.ValueOfUint64(uint64(0))
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgCreateSplitterPoolResponse"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgCreateSplitterPoolResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// WhichOneof reports which field within the oneof is populated,
+// returning nil if none are populated.
+// It panics if the oneof descriptor does not belong to this message.
+func (x *fastReflection_MsgCreateSplitterPoolResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+	switch d.FullName() {
+	default:
+		panic(fmt.Errorf("%s is not a oneof field in orbit.split.MsgCreateSplitterPoolResponse", d.FullName()))
+	}
+	panic("unreachable")
+}
+
+// GetUnknown retrieves the entire list of unknown fields.
+// The caller may only mutate the contents of the RawFields
+// if the mutated bytes are stored back into the message with SetUnknown.
+func (x *fastReflection_MsgCreateSplitterPoolResponse) GetUnknown() protoreflect.RawFields {
+	return x.unknownFields
+}
+
+// SetUnknown stores an entire list of unknown fields.
+// The raw fields must be syntactically valid according to the wire format.
+// An implementation may panic if this is not the case.
+// Once stored, the caller must not mutate the content of the RawFields.
+// An empty RawFields may be passed to clear the fields.
+//
+// SetUnknown is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgCreateSplitterPoolResponse) SetUnknown(fields protoreflect.RawFields) {
+	x.unknownFields = fields
+}
+
+// IsValid reports whether the message is valid.
+//
+// An invalid message is an empty, read-only value.
+//
+// An invalid message often corresponds to a nil pointer of the concrete
+// message type, but the details are implementation dependent.
+// Validity is not part of the protobuf data model, and may not
+// be preserved in marshaling or other operations.
+func (x *fastReflection_MsgCreateSplitterPoolResponse) IsValid() bool {
+	return x != nil
+}
+
+// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
+// This method may return nil.
+//
+// The returned methods type is identical to
+// "google.golang.org/protobuf/runtime/protoiface".Methods.
+// Consult the protoiface package documentation for details.
+func (x *fastReflection_MsgCreateSplitterPoolResponse) ProtoMethods() *protoiface.Methods {
+	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
+		x := input.Message.Interface().(*MsgCreateSplitterPoolResponse)
+		if x == nil {
+			return protoiface.SizeOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Size:              0,
+			}
+		}
+		options := runtime.SizeInputToOptions(input)
+		_ = options
+		var n int
+		var l int
+		_ = l
+		if x.PoolId != 0 {
+			n += 1 + runtime.Sov(uint64(x.PoolId))
+		}
+		if x.unknownFields != nil {
+			n += len(x.unknownFields)
+		}
+		return protoiface.SizeOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Size:              n,
+		}
+	}
+
+	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
+		x := input.Message.Interface().(*MsgCreateSplitterPoolResponse)
+		if x == nil {
+			return protoiface.MarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Buf:               input.Buf,
+			}, nil
+		}
+		options := runtime.MarshalInputToOptions(input)
+		_ = options
+		size := options.Size(x)
+		dAtA := make([]byte, size)
+		i := len(dAtA)
+		_ = i
+		var l int
+		_ = l
+		if x.unknownFields != nil {
+			i -= len(x.unknownFields)
+			copy(dAtA[i:], x.unknownFields)
+		}
+		if x.PoolId != 0 {
+			i = runtime.EncodeVarint(dAtA, i, uint64(x.PoolId))
+			i--
+			dAtA[i] = 0x8
+		}
+		if input.Buf != nil {
+			input.Buf = append(input.Buf, dAtA...)
+		} else {
+			input.Buf = dAtA
+		}
+		return protoiface.MarshalOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Buf:               input.Buf,
+		}, nil
+	}
+	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
+		x := input.Message.Interface().(*MsgCreateSplitterPoolResponse)
+		if x == nil {
+			return protoiface.UnmarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Flags:             input.Flags,
+			}, nil
+		}
+		options := runtime.UnmarshalInputToOptions(input)
+		_ = options
+		dAtA := input.Buf
+		l := len(dAtA)
+		iNdEx := 0
+		for iNdEx < l {
+			preIndex := iNdEx
+			var wire uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				wire |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			fieldNum := int32(wire >> 3)
+			wireType := int(wire & 0x7)
+			if wireType == 4 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgCreateSplitterPoolResponse: wiretype end group for non-group")
+			}
+			if fieldNum <= 0 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgCreateSplitterPoolResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			}
+			switch fieldNum {
+			case 1:
+				if wireType != 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field PoolId", wireType)
+				}
+				x.PoolId = 0
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					x.PoolId |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+			default:
+				iNdEx = preIndex
+				skippy, err := runtime.Skip(dAtA[iNdEx:])
+				if err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				if (skippy < 0) || (iNdEx+skippy) < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if (iNdEx + skippy) > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if !options.DiscardUnknown {
+					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
+				}
+				iNdEx += skippy
+			}
+		}
+
+		if iNdEx > l {
+			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+		}
+		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
+	}
+	return &protoiface.Methods{
+		NoUnkeyedLiterals: struct{}{},
+		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
+		Size:              size,
+		Marshal:           marshal,
+		Unmarshal:         unmarshal,
+		Merge:             nil,
+		CheckInitialized:  nil,
+	}
+}
+
+var (
+	md_MsgUpdateplitterPoolAccount               protoreflect.MessageDescriptor
+	fd_MsgUpdateplitterPoolAccount_creator       protoreflect.FieldDescriptor
+	fd_MsgUpdateplitterPoolAccount_pool_id       protoreflect.FieldDescriptor
+	fd_MsgUpdateplitterPoolAccount_connection_id protoreflect.FieldDescriptor
+	fd_MsgUpdateplitterPoolAccount_account_owner protoreflect.FieldDescriptor
+)
+
+func init() {
+	file_orbit_split_tx_proto_init()
+	md_MsgUpdateplitterPoolAccount = File_orbit_split_tx_proto.Messages().ByName("MsgUpdateplitterPoolAccount")
+	fd_MsgUpdateplitterPoolAccount_creator = md_MsgUpdateplitterPoolAccount.Fields().ByName("creator")
+	fd_MsgUpdateplitterPoolAccount_pool_id = md_MsgUpdateplitterPoolAccount.Fields().ByName("pool_id")
+	fd_MsgUpdateplitterPoolAccount_connection_id = md_MsgUpdateplitterPoolAccount.Fields().ByName("connection_id")
+	fd_MsgUpdateplitterPoolAccount_account_owner = md_MsgUpdateplitterPoolAccount.Fields().ByName("account_owner")
+}
+
+var _ protoreflect.Message = (*fastReflection_MsgUpdateplitterPoolAccount)(nil)
+
+type fastReflection_MsgUpdateplitterPoolAccount MsgUpdateplitterPoolAccount
+
+func (x *MsgUpdateplitterPoolAccount) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgUpdateplitterPoolAccount)(x)
+}
+
+func (x *MsgUpdateplitterPoolAccount) slowProtoReflect() protoreflect.Message {
+	mi := &file_orbit_split_tx_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+var _fastReflection_MsgUpdateplitterPoolAccount_messageType fastReflection_MsgUpdateplitterPoolAccount_messageType
+var _ protoreflect.MessageType = fastReflection_MsgUpdateplitterPoolAccount_messageType{}
+
+type fastReflection_MsgUpdateplitterPoolAccount_messageType struct{}
+
+func (x fastReflection_MsgUpdateplitterPoolAccount_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgUpdateplitterPoolAccount)(nil)
+}
+func (x fastReflection_MsgUpdateplitterPoolAccount_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgUpdateplitterPoolAccount)
+}
+func (x fastReflection_MsgUpdateplitterPoolAccount_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgUpdateplitterPoolAccount
+}
+
+// Descriptor returns message descriptor, which contains only the protobuf
+// type information for the message.
+func (x *fastReflection_MsgUpdateplitterPoolAccount) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgUpdateplitterPoolAccount
+}
+
+// Type returns the message type, which encapsulates both Go and protobuf
+// type information. If the Go type information is not needed,
+// it is recommended that the message descriptor be used instead.
+func (x *fastReflection_MsgUpdateplitterPoolAccount) Type() protoreflect.MessageType {
+	return _fastReflection_MsgUpdateplitterPoolAccount_messageType
+}
+
+// New returns a newly allocated and mutable empty message.
+func (x *fastReflection_MsgUpdateplitterPoolAccount) New() protoreflect.Message {
+	return new(fastReflection_MsgUpdateplitterPoolAccount)
+}
+
+// Interface unwraps the message reflection interface and
+// returns the underlying ProtoMessage interface.
+func (x *fastReflection_MsgUpdateplitterPoolAccount) Interface() protoreflect.ProtoMessage {
+	return (*MsgUpdateplitterPoolAccount)(x)
+}
+
+// Range iterates over every populated field in an undefined order,
+// calling f for each field descriptor and value encountered.
+// Range returns immediately if f returns false.
+// While iterating, mutating operations may only be performed
+// on the current field descriptor.
+func (x *fastReflection_MsgUpdateplitterPoolAccount) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.Creator != "" {
+		value := protoreflect.ValueOfString(x.Creator)
+		if !f(fd_MsgUpdateplitterPoolAccount_creator, value) {
+			return
+		}
+	}
+	if x.PoolId != uint64(0) {
+		value := protoreflect.ValueOfUint64(x.PoolId)
+		if !f(fd_MsgUpdateplitterPoolAccount_pool_id, value) {
+			return
+		}
+	}
+	if x.ConnectionId != "" {
+		value := protoreflect.ValueOfString(x.ConnectionId)
+		if !f(fd_MsgUpdateplitterPoolAccount_connection_id, value) {
+			return
+		}
+	}
+	if x.AccountOwner != "" {
+		value := protoreflect.ValueOfString(x.AccountOwner)
+		if !f(fd_MsgUpdateplitterPoolAccount_account_owner, value) {
+			return
+		}
+	}
+}
+
+// Has reports whether a field is populated.
+//
+// Some fields have the property of nullability where it is possible to
+// distinguish between the default value of a field and whether the field
+// was explicitly populated with the default value. Singular message fields,
+// member fields of a oneof, and proto2 scalar fields are nullable. Such
+// fields are populated only if explicitly set.
+//
+// In other cases (aside from the nullable cases above),
+// a proto3 scalar field is populated if it contains a non-zero value, and
+// a repeated field is populated if it is non-empty.
+func (x *fastReflection_MsgUpdateplitterPoolAccount) Has(fd protoreflect.FieldDescriptor) bool {
+	switch fd.FullName() {
+	case "orbit.split.MsgUpdateplitterPoolAccount.creator":
+		return x.Creator != ""
+	case "orbit.split.MsgUpdateplitterPoolAccount.pool_id":
+		return x.PoolId != uint64(0)
+	case "orbit.split.MsgUpdateplitterPoolAccount.connection_id":
+		return x.ConnectionId != ""
+	case "orbit.split.MsgUpdateplitterPoolAccount.account_owner":
+		return x.AccountOwner != ""
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgUpdateplitterPoolAccount"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgUpdateplitterPoolAccount does not contain field %s", fd.FullName()))
+	}
+}
+
+// Clear clears the field such that a subsequent Has call reports false.
+//
+// Clearing an extension field clears both the extension type and value
+// associated with the given field number.
+//
+// Clear is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgUpdateplitterPoolAccount) Clear(fd protoreflect.FieldDescriptor) {
+	switch fd.FullName() {
+	case "orbit.split.MsgUpdateplitterPoolAccount.creator":
+		x.Creator = ""
+	case "orbit.split.MsgUpdateplitterPoolAccount.pool_id":
+		x.PoolId = uint64(0)
+	case "orbit.split.MsgUpdateplitterPoolAccount.connection_id":
+		x.ConnectionId = ""
+	case "orbit.split.MsgUpdateplitterPoolAccount.account_owner":
+		x.AccountOwner = ""
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgUpdateplitterPoolAccount"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgUpdateplitterPoolAccount does not contain field %s", fd.FullName()))
+	}
+}
+
+// Get retrieves the value for a field.
+//
+// For unpopulated scalars, it returns the default value, where
+// the default value of a bytes scalar is guaranteed to be a copy.
+// For unpopulated composite types, it returns an empty, read-only view
+// of the value; to obtain a mutable reference, use Mutable.
+func (x *fastReflection_MsgUpdateplitterPoolAccount) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+	switch descriptor.FullName() {
+	case "orbit.split.MsgUpdateplitterPoolAccount.creator":
+		value := x.Creator
+		return protoreflect.ValueOfString(value)
+	case "orbit.split.MsgUpdateplitterPoolAccount.pool_id":
+		value := x.PoolId
+		return protoreflect.ValueOfUint64(value)
+	case "orbit.split.MsgUpdateplitterPoolAccount.connection_id":
+		value := x.ConnectionId
+		return protoreflect.ValueOfString(value)
+	case "orbit.split.MsgUpdateplitterPoolAccount.account_owner":
+		value := x.AccountOwner
+		return protoreflect.ValueOfString(value)
+	default:
+		if descriptor.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgUpdateplitterPoolAccount"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgUpdateplitterPoolAccount does not contain field %s", descriptor.FullName()))
+	}
+}
+
+// Set stores the value for a field.
+//
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType.
+// When setting a composite type, it is unspecified whether the stored value
+// aliases the source's memory in any way. If the composite value is an
+// empty, read-only value, then it panics.
+//
+// Set is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgUpdateplitterPoolAccount) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+	switch fd.FullName() {
+	case "orbit.split.MsgUpdateplitterPoolAccount.creator":
+		x.Creator = value.Interface().(string)
+	case "orbit.split.MsgUpdateplitterPoolAccount.pool_id":
+		x.PoolId = value.Uint()
+	case "orbit.split.MsgUpdateplitterPoolAccount.connection_id":
+		x.ConnectionId = value.Interface().(string)
+	case "orbit.split.MsgUpdateplitterPoolAccount.account_owner":
+		x.AccountOwner = value.Interface().(string)
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgUpdateplitterPoolAccount"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgUpdateplitterPoolAccount does not contain field %s", fd.FullName()))
+	}
+}
+
+// Mutable returns a mutable reference to a composite type.
+//
+// If the field is unpopulated, it may allocate a composite value.
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType
+// if not already stored.
+// It panics if the field does not contain a composite type.
+//
+// Mutable is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgUpdateplitterPoolAccount) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "orbit.split.MsgUpdateplitterPoolAccount.creator":
+		panic(fmt.Errorf("field creator of message orbit.split.MsgUpdateplitterPoolAccount is not mutable"))
+	case "orbit.split.MsgUpdateplitterPoolAccount.pool_id":
+		panic(fmt.Errorf("field pool_id of message orbit.split.MsgUpdateplitterPoolAccount is not mutable"))
+	case "orbit.split.MsgUpdateplitterPoolAccount.connection_id":
+		panic(fmt.Errorf("field connection_id of message orbit.split.MsgUpdateplitterPoolAccount is not mutable"))
+	case "orbit.split.MsgUpdateplitterPoolAccount.account_owner":
+		panic(fmt.Errorf("field account_owner of message orbit.split.MsgUpdateplitterPoolAccount is not mutable"))
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgUpdateplitterPoolAccount"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgUpdateplitterPoolAccount does not contain field %s", fd.FullName()))
+	}
+}
+
+// NewField returns a new value that is assignable to the field
+// for the given descriptor. For scalars, this returns the default value.
+// For lists, maps, and messages, this returns a new, empty, mutable value.
+func (x *fastReflection_MsgUpdateplitterPoolAccount) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "orbit.split.MsgUpdateplitterPoolAccount.creator":
+		return protoreflect.ValueOfString("")
+	case "orbit.split.MsgUpdateplitterPoolAccount.pool_id":
+		return protoreflect.ValueOfUint64(uint64(0))
+	case "orbit.split.MsgUpdateplitterPoolAccount.connection_id":
+		return protoreflect.ValueOfString("")
+	case "orbit.split.MsgUpdateplitterPoolAccount.account_owner":
+		return protoreflect.ValueOfString("")
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgUpdateplitterPoolAccount"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgUpdateplitterPoolAccount does not contain field %s", fd.FullName()))
+	}
+}
+
+// WhichOneof reports which field within the oneof is populated,
+// returning nil if none are populated.
+// It panics if the oneof descriptor does not belong to this message.
+func (x *fastReflection_MsgUpdateplitterPoolAccount) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+	switch d.FullName() {
+	default:
+		panic(fmt.Errorf("%s is not a oneof field in orbit.split.MsgUpdateplitterPoolAccount", d.FullName()))
+	}
+	panic("unreachable")
+}
+
+// GetUnknown retrieves the entire list of unknown fields.
+// The caller may only mutate the contents of the RawFields
+// if the mutated bytes are stored back into the message with SetUnknown.
+func (x *fastReflection_MsgUpdateplitterPoolAccount) GetUnknown() protoreflect.RawFields {
+	return x.unknownFields
+}
+
+// SetUnknown stores an entire list of unknown fields.
+// The raw fields must be syntactically valid according to the wire format.
+// An implementation may panic if this is not the case.
+// Once stored, the caller must not mutate the content of the RawFields.
+// An empty RawFields may be passed to clear the fields.
+//
+// SetUnknown is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgUpdateplitterPoolAccount) SetUnknown(fields protoreflect.RawFields) {
+	x.unknownFields = fields
+}
+
+// IsValid reports whether the message is valid.
+//
+// An invalid message is an empty, read-only value.
+//
+// An invalid message often corresponds to a nil pointer of the concrete
+// message type, but the details are implementation dependent.
+// Validity is not part of the protobuf data model, and may not
+// be preserved in marshaling or other operations.
+func (x *fastReflection_MsgUpdateplitterPoolAccount) IsValid() bool {
+	return x != nil
+}
+
+// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
+// This method may return nil.
+//
+// The returned methods type is identical to
+// "google.golang.org/protobuf/runtime/protoiface".Methods.
+// Consult the protoiface package documentation for details.
+func (x *fastReflection_MsgUpdateplitterPoolAccount) ProtoMethods() *protoiface.Methods {
+	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
+		x := input.Message.Interface().(*MsgUpdateplitterPoolAccount)
+		if x == nil {
+			return protoiface.SizeOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Size:              0,
+			}
+		}
+		options := runtime.SizeInputToOptions(input)
+		_ = options
+		var n int
+		var l int
+		_ = l
+		l = len(x.Creator)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		if x.PoolId != 0 {
+			n += 1 + runtime.Sov(uint64(x.PoolId))
+		}
+		l = len(x.ConnectionId)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		l = len(x.AccountOwner)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		if x.unknownFields != nil {
+			n += len(x.unknownFields)
+		}
+		return protoiface.SizeOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Size:              n,
+		}
+	}
+
+	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
+		x := input.Message.Interface().(*MsgUpdateplitterPoolAccount)
+		if x == nil {
+			return protoiface.MarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Buf:               input.Buf,
+			}, nil
+		}
+		options := runtime.MarshalInputToOptions(input)
+		_ = options
+		size := options.Size(x)
+		dAtA := make([]byte, size)
+		i := len(dAtA)
+		_ = i
+		var l int
+		_ = l
+		if x.unknownFields != nil {
+			i -= len(x.unknownFields)
+			copy(dAtA[i:], x.unknownFields)
+		}
+		if len(x.AccountOwner) > 0 {
+			i -= len(x.AccountOwner)
+			copy(dAtA[i:], x.AccountOwner)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.AccountOwner)))
+			i--
+			dAtA[i] = 0x22
+		}
+		if len(x.ConnectionId) > 0 {
+			i -= len(x.ConnectionId)
+			copy(dAtA[i:], x.ConnectionId)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.ConnectionId)))
+			i--
+			dAtA[i] = 0x1a
+		}
+		if x.PoolId != 0 {
+			i = runtime.EncodeVarint(dAtA, i, uint64(x.PoolId))
+			i--
+			dAtA[i] = 0x10
+		}
+		if len(x.Creator) > 0 {
+			i -= len(x.Creator)
+			copy(dAtA[i:], x.Creator)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Creator)))
+			i--
+			dAtA[i] = 0xa
+		}
+		if input.Buf != nil {
+			input.Buf = append(input.Buf, dAtA...)
+		} else {
+			input.Buf = dAtA
+		}
+		return protoiface.MarshalOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Buf:               input.Buf,
+		}, nil
+	}
+	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
+		x := input.Message.Interface().(*MsgUpdateplitterPoolAccount)
+		if x == nil {
+			return protoiface.UnmarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Flags:             input.Flags,
+			}, nil
+		}
+		options := runtime.UnmarshalInputToOptions(input)
+		_ = options
+		dAtA := input.Buf
+		l := len(dAtA)
+		iNdEx := 0
+		for iNdEx < l {
+			preIndex := iNdEx
+			var wire uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				wire |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			fieldNum := int32(wire >> 3)
+			wireType := int(wire & 0x7)
+			if wireType == 4 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUpdateplitterPoolAccount: wiretype end group for non-group")
+			}
+			if fieldNum <= 0 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUpdateplitterPoolAccount: illegal tag %d (wire type %d)", fieldNum, wire)
+			}
+			switch fieldNum {
+			case 1:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Creator = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 2:
+				if wireType != 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field PoolId", wireType)
+				}
+				x.PoolId = 0
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					x.PoolId |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+			case 3:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field ConnectionId", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.ConnectionId = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 4:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field AccountOwner", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.AccountOwner = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			default:
+				iNdEx = preIndex
+				skippy, err := runtime.Skip(dAtA[iNdEx:])
+				if err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				if (skippy < 0) || (iNdEx+skippy) < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if (iNdEx + skippy) > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if !options.DiscardUnknown {
+					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
+				}
+				iNdEx += skippy
+			}
+		}
+
+		if iNdEx > l {
+			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+		}
+		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
+	}
+	return &protoiface.Methods{
+		NoUnkeyedLiterals: struct{}{},
+		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
+		Size:              size,
+		Marshal:           marshal,
+		Unmarshal:         unmarshal,
+		Merge:             nil,
+		CheckInitialized:  nil,
+	}
+}
+
+var (
+	md_MsgUpdateplitterPoolAccountResponse protoreflect.MessageDescriptor
+)
+
+func init() {
+	file_orbit_split_tx_proto_init()
+	md_MsgUpdateplitterPoolAccountResponse = File_orbit_split_tx_proto.Messages().ByName("MsgUpdateplitterPoolAccountResponse")
+}
+
+var _ protoreflect.Message = (*fastReflection_MsgUpdateplitterPoolAccountResponse)(nil)
+
+type fastReflection_MsgUpdateplitterPoolAccountResponse MsgUpdateplitterPoolAccountResponse
+
+func (x *MsgUpdateplitterPoolAccountResponse) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgUpdateplitterPoolAccountResponse)(x)
+}
+
+func (x *MsgUpdateplitterPoolAccountResponse) slowProtoReflect() protoreflect.Message {
+	mi := &file_orbit_split_tx_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+var _fastReflection_MsgUpdateplitterPoolAccountResponse_messageType fastReflection_MsgUpdateplitterPoolAccountResponse_messageType
+var _ protoreflect.MessageType = fastReflection_MsgUpdateplitterPoolAccountResponse_messageType{}
+
+type fastReflection_MsgUpdateplitterPoolAccountResponse_messageType struct{}
+
+func (x fastReflection_MsgUpdateplitterPoolAccountResponse_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgUpdateplitterPoolAccountResponse)(nil)
+}
+func (x fastReflection_MsgUpdateplitterPoolAccountResponse_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgUpdateplitterPoolAccountResponse)
+}
+func (x fastReflection_MsgUpdateplitterPoolAccountResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgUpdateplitterPoolAccountResponse
+}
+
+// Descriptor returns message descriptor, which contains only the protobuf
+// type information for the message.
+func (x *fastReflection_MsgUpdateplitterPoolAccountResponse) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgUpdateplitterPoolAccountResponse
+}
+
+// Type returns the message type, which encapsulates both Go and protobuf
+// type information. If the Go type information is not needed,
+// it is recommended that the message descriptor be used instead.
+func (x *fastReflection_MsgUpdateplitterPoolAccountResponse) Type() protoreflect.MessageType {
+	return _fastReflection_MsgUpdateplitterPoolAccountResponse_messageType
+}
+
+// New returns a newly allocated and mutable empty message.
+func (x *fastReflection_MsgUpdateplitterPoolAccountResponse) New() protoreflect.Message {
+	return new(fastReflection_MsgUpdateplitterPoolAccountResponse)
+}
+
+// Interface unwraps the message reflection interface and
+// returns the underlying ProtoMessage interface.
+func (x *fastReflection_MsgUpdateplitterPoolAccountResponse) Interface() protoreflect.ProtoMessage {
+	return (*MsgUpdateplitterPoolAccountResponse)(x)
+}
+
+// Range iterates over every populated field in an undefined order,
+// calling f for each field descriptor and value encountered.
+// Range returns immediately if f returns false.
+// While iterating, mutating operations may only be performed
+// on the current field descriptor.
+func (x *fastReflection_MsgUpdateplitterPoolAccountResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+}
+
+// Has reports whether a field is populated.
+//
+// Some fields have the property of nullability where it is possible to
+// distinguish between the default value of a field and whether the field
+// was explicitly populated with the default value. Singular message fields,
+// member fields of a oneof, and proto2 scalar fields are nullable. Such
+// fields are populated only if explicitly set.
+//
+// In other cases (aside from the nullable cases above),
+// a proto3 scalar field is populated if it contains a non-zero value, and
+// a repeated field is populated if it is non-empty.
+func (x *fastReflection_MsgUpdateplitterPoolAccountResponse) Has(fd protoreflect.FieldDescriptor) bool {
+	switch fd.FullName() {
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgUpdateplitterPoolAccountResponse"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgUpdateplitterPoolAccountResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Clear clears the field such that a subsequent Has call reports false.
+//
+// Clearing an extension field clears both the extension type and value
+// associated with the given field number.
+//
+// Clear is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgUpdateplitterPoolAccountResponse) Clear(fd protoreflect.FieldDescriptor) {
+	switch fd.FullName() {
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgUpdateplitterPoolAccountResponse"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgUpdateplitterPoolAccountResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Get retrieves the value for a field.
+//
+// For unpopulated scalars, it returns the default value, where
+// the default value of a bytes scalar is guaranteed to be a copy.
+// For unpopulated composite types, it returns an empty, read-only view
+// of the value; to obtain a mutable reference, use Mutable.
+func (x *fastReflection_MsgUpdateplitterPoolAccountResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+	switch descriptor.FullName() {
+	default:
+		if descriptor.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgUpdateplitterPoolAccountResponse"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgUpdateplitterPoolAccountResponse does not contain field %s", descriptor.FullName()))
+	}
+}
+
+// Set stores the value for a field.
+//
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType.
+// When setting a composite type, it is unspecified whether the stored value
+// aliases the source's memory in any way. If the composite value is an
+// empty, read-only value, then it panics.
+//
+// Set is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgUpdateplitterPoolAccountResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+	switch fd.FullName() {
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgUpdateplitterPoolAccountResponse"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgUpdateplitterPoolAccountResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Mutable returns a mutable reference to a composite type.
+//
+// If the field is unpopulated, it may allocate a composite value.
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType
+// if not already stored.
+// It panics if the field does not contain a composite type.
+//
+// Mutable is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgUpdateplitterPoolAccountResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgUpdateplitterPoolAccountResponse"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgUpdateplitterPoolAccountResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// NewField returns a new value that is assignable to the field
+// for the given descriptor. For scalars, this returns the default value.
+// For lists, maps, and messages, this returns a new, empty, mutable value.
+func (x *fastReflection_MsgUpdateplitterPoolAccountResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: orbit.split.MsgUpdateplitterPoolAccountResponse"))
+		}
+		panic(fmt.Errorf("message orbit.split.MsgUpdateplitterPoolAccountResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// WhichOneof reports which field within the oneof is populated,
+// returning nil if none are populated.
+// It panics if the oneof descriptor does not belong to this message.
+func (x *fastReflection_MsgUpdateplitterPoolAccountResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+	switch d.FullName() {
+	default:
+		panic(fmt.Errorf("%s is not a oneof field in orbit.split.MsgUpdateplitterPoolAccountResponse", d.FullName()))
+	}
+	panic("unreachable")
+}
+
+// GetUnknown retrieves the entire list of unknown fields.
+// The caller may only mutate the contents of the RawFields
+// if the mutated bytes are stored back into the message with SetUnknown.
+func (x *fastReflection_MsgUpdateplitterPoolAccountResponse) GetUnknown() protoreflect.RawFields {
+	return x.unknownFields
+}
+
+// SetUnknown stores an entire list of unknown fields.
+// The raw fields must be syntactically valid according to the wire format.
+// An implementation may panic if this is not the case.
+// Once stored, the caller must not mutate the content of the RawFields.
+// An empty RawFields may be passed to clear the fields.
+//
+// SetUnknown is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgUpdateplitterPoolAccountResponse) SetUnknown(fields protoreflect.RawFields) {
+	x.unknownFields = fields
+}
+
+// IsValid reports whether the message is valid.
+//
+// An invalid message is an empty, read-only value.
+//
+// An invalid message often corresponds to a nil pointer of the concrete
+// message type, but the details are implementation dependent.
+// Validity is not part of the protobuf data model, and may not
+// be preserved in marshaling or other operations.
+func (x *fastReflection_MsgUpdateplitterPoolAccountResponse) IsValid() bool {
+	return x != nil
+}
+
+// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
+// This method may return nil.
+//
+// The returned methods type is identical to
+// "google.golang.org/protobuf/runtime/protoiface".Methods.
+// Consult the protoiface package documentation for details.
+func (x *fastReflection_MsgUpdateplitterPoolAccountResponse) ProtoMethods() *protoiface.Methods {
+	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
+		x := input.Message.Interface().(*MsgUpdateplitterPoolAccountResponse)
+		if x == nil {
+			return protoiface.SizeOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Size:              0,
+			}
+		}
+		options := runtime.SizeInputToOptions(input)
+		_ = options
+		var n int
+		var l int
+		_ = l
+		if x.unknownFields != nil {
+			n += len(x.unknownFields)
+		}
+		return protoiface.SizeOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Size:              n,
+		}
+	}
+
+	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
+		x := input.Message.Interface().(*MsgUpdateplitterPoolAccountResponse)
+		if x == nil {
+			return protoiface.MarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Buf:               input.Buf,
+			}, nil
+		}
+		options := runtime.MarshalInputToOptions(input)
+		_ = options
+		size := options.Size(x)
+		dAtA := make([]byte, size)
+		i := len(dAtA)
+		_ = i
+		var l int
+		_ = l
+		if x.unknownFields != nil {
+			i -= len(x.unknownFields)
+			copy(dAtA[i:], x.unknownFields)
+		}
+		if input.Buf != nil {
+			input.Buf = append(input.Buf, dAtA...)
+		} else {
+			input.Buf = dAtA
+		}
+		return protoiface.MarshalOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Buf:               input.Buf,
+		}, nil
+	}
+	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
+		x := input.Message.Interface().(*MsgUpdateplitterPoolAccountResponse)
+		if x == nil {
+			return protoiface.UnmarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Flags:             input.Flags,
+			}, nil
+		}
+		options := runtime.UnmarshalInputToOptions(input)
+		_ = options
+		dAtA := input.Buf
+		l := len(dAtA)
+		iNdEx := 0
+		for iNdEx < l {
+			preIndex := iNdEx
+			var wire uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				wire |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			fieldNum := int32(wire >> 3)
+			wireType := int(wire & 0x7)
+			if wireType == 4 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUpdateplitterPoolAccountResponse: wiretype end group for non-group")
+			}
+			if fieldNum <= 0 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUpdateplitterPoolAccountResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			}
+			switch fieldNum {
+			default:
+				iNdEx = preIndex
+				skippy, err := runtime.Skip(dAtA[iNdEx:])
+				if err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				if (skippy < 0) || (iNdEx+skippy) < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if (iNdEx + skippy) > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if !options.DiscardUnknown {
+					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
+				}
+				iNdEx += skippy
+			}
+		}
+
+		if iNdEx > l {
+			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+		}
+		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
+	}
+	return &protoiface.Methods{
+		NoUnkeyedLiterals: struct{}{},
+		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
+		Size:              size,
+		Marshal:           marshal,
+		Unmarshal:         unmarshal,
+		Merge:             nil,
+		CheckInitialized:  nil,
+	}
+}
 
 var (
 	md_MsgUpdateParams           protoreflect.MessageDescriptor
@@ -39,7 +2119,7 @@ func (x *MsgUpdateParams) ProtoReflect() protoreflect.Message {
 }
 
 func (x *MsgUpdateParams) slowProtoReflect() protoreflect.Message {
-	mi := &file_orbit_split_tx_proto_msgTypes[0]
+	mi := &file_orbit_split_tx_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -534,7 +2614,7 @@ func (x *MsgUpdateParamsResponse) ProtoReflect() protoreflect.Message {
 }
 
 func (x *MsgUpdateParamsResponse) slowProtoReflect() protoreflect.Message {
-	mi := &file_orbit_split_tx_proto_msgTypes[1]
+	mi := &file_orbit_split_tx_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -885,6 +2965,205 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// sender: pool creater
+// staked_asset: liquid staking derivative needs to split into yield and principle token
+// maturity: maturity of the pool in blockheight
+type MsgCreateSplitterPool struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Creator           string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Maturity          uint64 `protobuf:"varint,2,opt,name=maturity,proto3" json:"maturity,omitempty"`
+	IbcDenom          string `protobuf:"bytes,3,opt,name=ibc_denom,json=ibcDenom,proto3" json:"ibc_denom,omitempty"`
+	HostDenom         string `protobuf:"bytes,4,opt,name=host_denom,json=hostDenom,proto3" json:"host_denom,omitempty"`
+	ConnectionId      string `protobuf:"bytes,5,opt,name=connection_id,json=connectionId,proto3" json:"connection_id,omitempty"`
+	TransferChannelId string `protobuf:"bytes,6,opt,name=transfer_channel_id,json=transferChannelId,proto3" json:"transfer_channel_id,omitempty"`
+}
+
+func (x *MsgCreateSplitterPool) Reset() {
+	*x = MsgCreateSplitterPool{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_orbit_split_tx_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MsgCreateSplitterPool) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MsgCreateSplitterPool) ProtoMessage() {}
+
+// Deprecated: Use MsgCreateSplitterPool.ProtoReflect.Descriptor instead.
+func (*MsgCreateSplitterPool) Descriptor() ([]byte, []int) {
+	return file_orbit_split_tx_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *MsgCreateSplitterPool) GetCreator() string {
+	if x != nil {
+		return x.Creator
+	}
+	return ""
+}
+
+func (x *MsgCreateSplitterPool) GetMaturity() uint64 {
+	if x != nil {
+		return x.Maturity
+	}
+	return 0
+}
+
+func (x *MsgCreateSplitterPool) GetIbcDenom() string {
+	if x != nil {
+		return x.IbcDenom
+	}
+	return ""
+}
+
+func (x *MsgCreateSplitterPool) GetHostDenom() string {
+	if x != nil {
+		return x.HostDenom
+	}
+	return ""
+}
+
+func (x *MsgCreateSplitterPool) GetConnectionId() string {
+	if x != nil {
+		return x.ConnectionId
+	}
+	return ""
+}
+
+func (x *MsgCreateSplitterPool) GetTransferChannelId() string {
+	if x != nil {
+		return x.TransferChannelId
+	}
+	return ""
+}
+
+type MsgCreateSplitterPoolResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	PoolId uint64 `protobuf:"varint,1,opt,name=pool_id,json=poolId,proto3" json:"pool_id,omitempty"`
+}
+
+func (x *MsgCreateSplitterPoolResponse) Reset() {
+	*x = MsgCreateSplitterPoolResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_orbit_split_tx_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MsgCreateSplitterPoolResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MsgCreateSplitterPoolResponse) ProtoMessage() {}
+
+// Deprecated: Use MsgCreateSplitterPoolResponse.ProtoReflect.Descriptor instead.
+func (*MsgCreateSplitterPoolResponse) Descriptor() ([]byte, []int) {
+	return file_orbit_split_tx_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *MsgCreateSplitterPoolResponse) GetPoolId() uint64 {
+	if x != nil {
+		return x.PoolId
+	}
+	return 0
+}
+
+type MsgUpdateplitterPoolAccount struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Creator      string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	PoolId       uint64 `protobuf:"varint,2,opt,name=pool_id,json=poolId,proto3" json:"pool_id,omitempty"`
+	ConnectionId string `protobuf:"bytes,3,opt,name=connection_id,json=connectionId,proto3" json:"connection_id,omitempty"`
+	// account_owner is (chainId + "." + "delegate")
+	AccountOwner string `protobuf:"bytes,4,opt,name=account_owner,json=accountOwner,proto3" json:"account_owner,omitempty"`
+}
+
+func (x *MsgUpdateplitterPoolAccount) Reset() {
+	*x = MsgUpdateplitterPoolAccount{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_orbit_split_tx_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MsgUpdateplitterPoolAccount) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MsgUpdateplitterPoolAccount) ProtoMessage() {}
+
+// Deprecated: Use MsgUpdateplitterPoolAccount.ProtoReflect.Descriptor instead.
+func (*MsgUpdateplitterPoolAccount) Descriptor() ([]byte, []int) {
+	return file_orbit_split_tx_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *MsgUpdateplitterPoolAccount) GetCreator() string {
+	if x != nil {
+		return x.Creator
+	}
+	return ""
+}
+
+func (x *MsgUpdateplitterPoolAccount) GetPoolId() uint64 {
+	if x != nil {
+		return x.PoolId
+	}
+	return 0
+}
+
+func (x *MsgUpdateplitterPoolAccount) GetConnectionId() string {
+	if x != nil {
+		return x.ConnectionId
+	}
+	return ""
+}
+
+func (x *MsgUpdateplitterPoolAccount) GetAccountOwner() string {
+	if x != nil {
+		return x.AccountOwner
+	}
+	return ""
+}
+
+type MsgUpdateplitterPoolAccountResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *MsgUpdateplitterPoolAccountResponse) Reset() {
+	*x = MsgUpdateplitterPoolAccountResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_orbit_split_tx_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MsgUpdateplitterPoolAccountResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MsgUpdateplitterPoolAccountResponse) ProtoMessage() {}
+
+// Deprecated: Use MsgUpdateplitterPoolAccountResponse.ProtoReflect.Descriptor instead.
+func (*MsgUpdateplitterPoolAccountResponse) Descriptor() ([]byte, []int) {
+	return file_orbit_split_tx_proto_rawDescGZIP(), []int{3}
+}
+
 // MsgUpdateParams is the Msg/UpdateParams request type.
 type MsgUpdateParams struct {
 	state         protoimpl.MessageState
@@ -902,7 +3181,7 @@ type MsgUpdateParams struct {
 func (x *MsgUpdateParams) Reset() {
 	*x = MsgUpdateParams{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_orbit_split_tx_proto_msgTypes[0]
+		mi := &file_orbit_split_tx_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -916,7 +3195,7 @@ func (*MsgUpdateParams) ProtoMessage() {}
 
 // Deprecated: Use MsgUpdateParams.ProtoReflect.Descriptor instead.
 func (*MsgUpdateParams) Descriptor() ([]byte, []int) {
-	return file_orbit_split_tx_proto_rawDescGZIP(), []int{0}
+	return file_orbit_split_tx_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *MsgUpdateParams) GetAuthority() string {
@@ -944,7 +3223,7 @@ type MsgUpdateParamsResponse struct {
 func (x *MsgUpdateParamsResponse) Reset() {
 	*x = MsgUpdateParamsResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_orbit_split_tx_proto_msgTypes[1]
+		mi := &file_orbit_split_tx_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -958,7 +3237,7 @@ func (*MsgUpdateParamsResponse) ProtoMessage() {}
 
 // Deprecated: Use MsgUpdateParamsResponse.ProtoReflect.Descriptor instead.
 func (*MsgUpdateParamsResponse) Descriptor() ([]byte, []int) {
-	return file_orbit_split_tx_proto_rawDescGZIP(), []int{1}
+	return file_orbit_split_tx_proto_rawDescGZIP(), []int{5}
 }
 
 var File_orbit_split_tx_proto protoreflect.FileDescriptor
@@ -970,38 +3249,86 @@ var file_orbit_split_tx_proto_rawDesc = []byte{
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x17, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2f, 0x6d,
 	0x73, 0x67, 0x2f, 0x76, 0x31, 0x2f, 0x6d, 0x73, 0x67, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a,
 	0x19, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x63, 0x6f,
-	0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x14, 0x67, 0x6f, 0x67, 0x6f,
+	0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1e, 0x63, 0x6f, 0x73, 0x6d,
+	0x6f, 0x73, 0x2f, 0x62, 0x61, 0x73, 0x65, 0x2f, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2f,
+	0x63, 0x6f, 0x69, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x14, 0x67, 0x6f, 0x67, 0x6f,
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x67, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
 	0x1a, 0x18, 0x6f, 0x72, 0x62, 0x69, 0x74, 0x2f, 0x73, 0x70, 0x6c, 0x69, 0x74, 0x2f, 0x70, 0x61,
-	0x72, 0x61, 0x6d, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xb3, 0x01, 0x0a, 0x0f, 0x4d,
-	0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x36,
-	0x0a, 0x09, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64,
-	0x64, 0x72, 0x65, 0x73, 0x73, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x09, 0x61, 0x75, 0x74,
-	0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x12, 0x36, 0x0a, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x6f, 0x72, 0x62, 0x69, 0x74, 0x2e, 0x73,
-	0x70, 0x6c, 0x69, 0x74, 0x2e, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x42, 0x09, 0xc8, 0xde, 0x1f,
-	0x00, 0xa8, 0xe7, 0xb0, 0x2a, 0x01, 0x52, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x3a, 0x30,
-	0x82, 0xe7, 0xb0, 0x2a, 0x09, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x8a, 0xe7,
-	0xb0, 0x2a, 0x1d, 0x6f, 0x72, 0x62, 0x69, 0x74, 0x2f, 0x78, 0x2f, 0x73, 0x70, 0x6c, 0x69, 0x74,
-	0x2f, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73,
-	0x22, 0x19, 0x0a, 0x17, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72,
-	0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32, 0x60, 0x0a, 0x03, 0x4d,
-	0x73, 0x67, 0x12, 0x52, 0x0a, 0x0c, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61,
-	0x6d, 0x73, 0x12, 0x1c, 0x2e, 0x6f, 0x72, 0x62, 0x69, 0x74, 0x2e, 0x73, 0x70, 0x6c, 0x69, 0x74,
-	0x2e, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73,
-	0x1a, 0x24, 0x2e, 0x6f, 0x72, 0x62, 0x69, 0x74, 0x2e, 0x73, 0x70, 0x6c, 0x69, 0x74, 0x2e, 0x4d,
+	0x72, 0x61, 0x6d, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xec, 0x01, 0x0a, 0x15, 0x4d,
+	0x73, 0x67, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x70, 0x6c, 0x69, 0x74, 0x74, 0x65, 0x72,
+	0x50, 0x6f, 0x6f, 0x6c, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x12, 0x1a,
+	0x0a, 0x08, 0x6d, 0x61, 0x74, 0x75, 0x72, 0x69, 0x74, 0x79, 0x18, 0x02, 0x20, 0x01, 0x28, 0x04,
+	0x52, 0x08, 0x6d, 0x61, 0x74, 0x75, 0x72, 0x69, 0x74, 0x79, 0x12, 0x1b, 0x0a, 0x09, 0x69, 0x62,
+	0x63, 0x5f, 0x64, 0x65, 0x6e, 0x6f, 0x6d, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x69,
+	0x62, 0x63, 0x44, 0x65, 0x6e, 0x6f, 0x6d, 0x12, 0x1d, 0x0a, 0x0a, 0x68, 0x6f, 0x73, 0x74, 0x5f,
+	0x64, 0x65, 0x6e, 0x6f, 0x6d, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x68, 0x6f, 0x73,
+	0x74, 0x44, 0x65, 0x6e, 0x6f, 0x6d, 0x12, 0x23, 0x0a, 0x0d, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x63,
+	0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x12, 0x2e, 0x0a, 0x13, 0x74,
+	0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x5f, 0x63, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x5f,
+	0x69, 0x64, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x11, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x66,
+	0x65, 0x72, 0x43, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x49, 0x64, 0x3a, 0x0c, 0x82, 0xe7, 0xb0,
+	0x2a, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x22, 0x38, 0x0a, 0x1d, 0x4d, 0x73, 0x67,
+	0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x70, 0x6c, 0x69, 0x74, 0x74, 0x65, 0x72, 0x50, 0x6f,
+	0x6f, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x70, 0x6f,
+	0x6f, 0x6c, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x06, 0x70, 0x6f, 0x6f,
+	0x6c, 0x49, 0x64, 0x22, 0xa8, 0x01, 0x0a, 0x1b, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x70, 0x6c, 0x69, 0x74, 0x74, 0x65, 0x72, 0x50, 0x6f, 0x6f, 0x6c, 0x41, 0x63, 0x63, 0x6f,
+	0x75, 0x6e, 0x74, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x12, 0x17, 0x0a,
+	0x07, 0x70, 0x6f, 0x6f, 0x6c, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x04, 0x52, 0x06,
+	0x70, 0x6f, 0x6f, 0x6c, 0x49, 0x64, 0x12, 0x23, 0x0a, 0x0d, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x63,
+	0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x12, 0x23, 0x0a, 0x0d, 0x61,
+	0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x5f, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x18, 0x04, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x0c, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x4f, 0x77, 0x6e, 0x65, 0x72,
+	0x3a, 0x0c, 0x82, 0xe7, 0xb0, 0x2a, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x22, 0x25,
+	0x0a, 0x23, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x70, 0x6c, 0x69, 0x74, 0x74,
+	0x65, 0x72, 0x50, 0x6f, 0x6f, 0x6c, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0xb3, 0x01, 0x0a, 0x0f, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64,
+	0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x36, 0x0a, 0x09, 0x61, 0x75, 0x74,
+	0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4,
+	0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73,
+	0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x09, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74,
+	0x79, 0x12, 0x36, 0x0a, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x13, 0x2e, 0x6f, 0x72, 0x62, 0x69, 0x74, 0x2e, 0x73, 0x70, 0x6c, 0x69, 0x74, 0x2e,
+	0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x42, 0x09, 0xc8, 0xde, 0x1f, 0x00, 0xa8, 0xe7, 0xb0, 0x2a,
+	0x01, 0x52, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x3a, 0x30, 0x82, 0xe7, 0xb0, 0x2a, 0x09,
+	0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x8a, 0xe7, 0xb0, 0x2a, 0x1d, 0x6f, 0x72,
+	0x62, 0x69, 0x74, 0x2f, 0x78, 0x2f, 0x73, 0x70, 0x6c, 0x69, 0x74, 0x2f, 0x4d, 0x73, 0x67, 0x55,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x22, 0x19, 0x0a, 0x17, 0x4d,
 	0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x1a, 0x05, 0x80, 0xe7, 0xb0, 0x2a, 0x01, 0x42, 0x85, 0x01,
-	0x0a, 0x0f, 0x63, 0x6f, 0x6d, 0x2e, 0x6f, 0x72, 0x62, 0x69, 0x74, 0x2e, 0x73, 0x70, 0x6c, 0x69,
-	0x74, 0x42, 0x07, 0x54, 0x78, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x1c, 0x63, 0x6f,
-	0x73, 0x6d, 0x6f, 0x73, 0x73, 0x64, 0x6b, 0x2e, 0x69, 0x6f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x6f,
-	0x72, 0x62, 0x69, 0x74, 0x2f, 0x73, 0x70, 0x6c, 0x69, 0x74, 0xa2, 0x02, 0x03, 0x4f, 0x53, 0x58,
-	0xaa, 0x02, 0x0b, 0x4f, 0x72, 0x62, 0x69, 0x74, 0x2e, 0x53, 0x70, 0x6c, 0x69, 0x74, 0xca, 0x02,
-	0x0b, 0x4f, 0x72, 0x62, 0x69, 0x74, 0x5c, 0x53, 0x70, 0x6c, 0x69, 0x74, 0xe2, 0x02, 0x17, 0x4f,
-	0x72, 0x62, 0x69, 0x74, 0x5c, 0x53, 0x70, 0x6c, 0x69, 0x74, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65,
-	0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x0c, 0x4f, 0x72, 0x62, 0x69, 0x74, 0x3a, 0x3a,
-	0x53, 0x70, 0x6c, 0x69, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32, 0xc2, 0x02, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x12, 0x52,
+	0x0a, 0x0c, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x1c,
+	0x2e, 0x6f, 0x72, 0x62, 0x69, 0x74, 0x2e, 0x73, 0x70, 0x6c, 0x69, 0x74, 0x2e, 0x4d, 0x73, 0x67,
+	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x1a, 0x24, 0x2e, 0x6f,
+	0x72, 0x62, 0x69, 0x74, 0x2e, 0x73, 0x70, 0x6c, 0x69, 0x74, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x70,
+	0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x64, 0x0a, 0x12, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x70, 0x6c, 0x69,
+	0x74, 0x74, 0x65, 0x72, 0x50, 0x6f, 0x6f, 0x6c, 0x12, 0x22, 0x2e, 0x6f, 0x72, 0x62, 0x69, 0x74,
+	0x2e, 0x73, 0x70, 0x6c, 0x69, 0x74, 0x2e, 0x4d, 0x73, 0x67, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65,
+	0x53, 0x70, 0x6c, 0x69, 0x74, 0x74, 0x65, 0x72, 0x50, 0x6f, 0x6f, 0x6c, 0x1a, 0x2a, 0x2e, 0x6f,
+	0x72, 0x62, 0x69, 0x74, 0x2e, 0x73, 0x70, 0x6c, 0x69, 0x74, 0x2e, 0x4d, 0x73, 0x67, 0x43, 0x72,
+	0x65, 0x61, 0x74, 0x65, 0x53, 0x70, 0x6c, 0x69, 0x74, 0x74, 0x65, 0x72, 0x50, 0x6f, 0x6f, 0x6c,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x7a, 0x0a, 0x1c, 0x55, 0x70, 0x64, 0x61,
+	0x74, 0x65, 0x53, 0x70, 0x6c, 0x69, 0x74, 0x74, 0x65, 0x72, 0x50, 0x6f, 0x6f, 0x6c, 0x49, 0x63,
+	0x61, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x28, 0x2e, 0x6f, 0x72, 0x62, 0x69, 0x74,
+	0x2e, 0x73, 0x70, 0x6c, 0x69, 0x74, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
+	0x70, 0x6c, 0x69, 0x74, 0x74, 0x65, 0x72, 0x50, 0x6f, 0x6f, 0x6c, 0x41, 0x63, 0x63, 0x6f, 0x75,
+	0x6e, 0x74, 0x1a, 0x30, 0x2e, 0x6f, 0x72, 0x62, 0x69, 0x74, 0x2e, 0x73, 0x70, 0x6c, 0x69, 0x74,
+	0x2e, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x70, 0x6c, 0x69, 0x74, 0x74, 0x65,
+	0x72, 0x50, 0x6f, 0x6f, 0x6c, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x1a, 0x05, 0x80, 0xe7, 0xb0, 0x2a, 0x01, 0x42, 0x85, 0x01, 0x0a, 0x0f,
+	0x63, 0x6f, 0x6d, 0x2e, 0x6f, 0x72, 0x62, 0x69, 0x74, 0x2e, 0x73, 0x70, 0x6c, 0x69, 0x74, 0x42,
+	0x07, 0x54, 0x78, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x1c, 0x63, 0x6f, 0x73, 0x6d,
+	0x6f, 0x73, 0x73, 0x64, 0x6b, 0x2e, 0x69, 0x6f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x6f, 0x72, 0x62,
+	0x69, 0x74, 0x2f, 0x73, 0x70, 0x6c, 0x69, 0x74, 0xa2, 0x02, 0x03, 0x4f, 0x53, 0x58, 0xaa, 0x02,
+	0x0b, 0x4f, 0x72, 0x62, 0x69, 0x74, 0x2e, 0x53, 0x70, 0x6c, 0x69, 0x74, 0xca, 0x02, 0x0b, 0x4f,
+	0x72, 0x62, 0x69, 0x74, 0x5c, 0x53, 0x70, 0x6c, 0x69, 0x74, 0xe2, 0x02, 0x17, 0x4f, 0x72, 0x62,
+	0x69, 0x74, 0x5c, 0x53, 0x70, 0x6c, 0x69, 0x74, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61,
+	0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x0c, 0x4f, 0x72, 0x62, 0x69, 0x74, 0x3a, 0x3a, 0x53, 0x70,
+	0x6c, 0x69, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1016,18 +3343,26 @@ func file_orbit_split_tx_proto_rawDescGZIP() []byte {
 	return file_orbit_split_tx_proto_rawDescData
 }
 
-var file_orbit_split_tx_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_orbit_split_tx_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_orbit_split_tx_proto_goTypes = []interface{}{
-	(*MsgUpdateParams)(nil),         // 0: orbit.split.MsgUpdateParams
-	(*MsgUpdateParamsResponse)(nil), // 1: orbit.split.MsgUpdateParamsResponse
-	(*Params)(nil),                  // 2: orbit.split.Params
+	(*MsgCreateSplitterPool)(nil),               // 0: orbit.split.MsgCreateSplitterPool
+	(*MsgCreateSplitterPoolResponse)(nil),       // 1: orbit.split.MsgCreateSplitterPoolResponse
+	(*MsgUpdateplitterPoolAccount)(nil),         // 2: orbit.split.MsgUpdateplitterPoolAccount
+	(*MsgUpdateplitterPoolAccountResponse)(nil), // 3: orbit.split.MsgUpdateplitterPoolAccountResponse
+	(*MsgUpdateParams)(nil),                     // 4: orbit.split.MsgUpdateParams
+	(*MsgUpdateParamsResponse)(nil),             // 5: orbit.split.MsgUpdateParamsResponse
+	(*Params)(nil),                              // 6: orbit.split.Params
 }
 var file_orbit_split_tx_proto_depIdxs = []int32{
-	2, // 0: orbit.split.MsgUpdateParams.params:type_name -> orbit.split.Params
-	0, // 1: orbit.split.Msg.UpdateParams:input_type -> orbit.split.MsgUpdateParams
-	1, // 2: orbit.split.Msg.UpdateParams:output_type -> orbit.split.MsgUpdateParamsResponse
-	2, // [2:3] is the sub-list for method output_type
-	1, // [1:2] is the sub-list for method input_type
+	6, // 0: orbit.split.MsgUpdateParams.params:type_name -> orbit.split.Params
+	4, // 1: orbit.split.Msg.UpdateParams:input_type -> orbit.split.MsgUpdateParams
+	0, // 2: orbit.split.Msg.CreateSplitterPool:input_type -> orbit.split.MsgCreateSplitterPool
+	2, // 3: orbit.split.Msg.UpdateSplitterPoolIcaAccount:input_type -> orbit.split.MsgUpdateplitterPoolAccount
+	5, // 4: orbit.split.Msg.UpdateParams:output_type -> orbit.split.MsgUpdateParamsResponse
+	1, // 5: orbit.split.Msg.CreateSplitterPool:output_type -> orbit.split.MsgCreateSplitterPoolResponse
+	3, // 6: orbit.split.Msg.UpdateSplitterPoolIcaAccount:output_type -> orbit.split.MsgUpdateplitterPoolAccountResponse
+	4, // [4:7] is the sub-list for method output_type
+	1, // [1:4] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
@@ -1041,7 +3376,7 @@ func file_orbit_split_tx_proto_init() {
 	file_orbit_split_params_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_orbit_split_tx_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgUpdateParams); i {
+			switch v := v.(*MsgCreateSplitterPool); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1053,6 +3388,54 @@ func file_orbit_split_tx_proto_init() {
 			}
 		}
 		file_orbit_split_tx_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MsgCreateSplitterPoolResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_orbit_split_tx_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MsgUpdateplitterPoolAccount); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_orbit_split_tx_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MsgUpdateplitterPoolAccountResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_orbit_split_tx_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MsgUpdateParams); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_orbit_split_tx_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*MsgUpdateParamsResponse); i {
 			case 0:
 				return &v.state
@@ -1071,7 +3454,7 @@ func file_orbit_split_tx_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_orbit_split_tx_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

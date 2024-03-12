@@ -20,6 +20,8 @@ service Msg {
 
   // CreateSplitterPool tx will create a pool which store the lsd and returns yield and principle tokens
   rpc CreateSplitterPool(MsgCreateSplitterPool) returns (MsgCreateSplitterPoolResponse);
+  //query the
+  rpc UpdateSplitterPoolIcaAccount(MsgUpdateplitterPoolAccount) returns (MsgUpdateplitterPoolAccountResponse);
 }
 
 /*
@@ -28,14 +30,29 @@ service Msg {
  maturity: maturity of the pool in blockheight 
 */
 message MsgCreateSplitterPool {
-  string sender = 1;
-  cosmos.base.v1beta1.Coin staked_asset = 2;
-  uint64 maturity = 3;
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1;
+  uint64 maturity = 2;
+  string ibc_denom = 3;
+  string host_denom = 4;
+  string connection_id = 5;
+  string transfer_channel_id = 6;
 }
 
 message MsgCreateSplitterPoolResponse {
   uint64 pool_id = 1;
 }
+
+message MsgUpdateplitterPoolAccount {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator = 1;
+  uint64 pool_id = 2;
+  string connection_id = 3;
+  // account_owner is (chainId + "." + "delegate")
+  string account_owner = 4;
+}
+
+message MsgUpdateplitterPoolAccountResponse {}
 
 
 // MsgUpdateParams is the Msg/UpdateParams request type.

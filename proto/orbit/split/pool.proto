@@ -1,0 +1,17 @@
+syntax = "proto3";
+package orbit.split;
+
+option go_package = "github.com/99adarsh/orbit/x/split/types";
+
+message Pool {
+  
+  uint64 id = 1; 
+  string chain_id = 2;
+  uint64 maturity = 3; 
+  string ibc_denom = 4; 
+  string host_denom = 5; 
+  string pool_address = 6; 
+  string connection_id = 7; 
+  string transfer_channel_id = 8;
+  string ica_host_address = 9;
+}

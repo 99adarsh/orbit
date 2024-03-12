@@ -19262,6 +19262,206 @@ paths:
               parameters.
       tags:
         - Msg
+  /99adarsh/orbit/split/params:
+    get:
+      summary: Parameters queries the parameters of the module.
+      operationId: OrbitSplitQuery_Params
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              params:
+                description: params holds all the parameters of this module.
+                type: object
+            description: >-
+              QueryParamsResponse is response type for the Query/Params RPC
+              method.
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      tags:
+        - Query
+  /orbit.split.Msg/CreateSplitterPool:
+    post:
+      summary: >-
+        CreateSplitterPool tx will create a pool which store the lsd and returns
+        yield and principle tokens
+      operationId: OrbitSplitMsg_CreateSplitterPool
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              pool_id:
+                type: string
+                format: uint64
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              creator:
+                type: string
+              maturity:
+                type: string
+                format: uint64
+              ibc_denom:
+                type: string
+              host_denom:
+                type: string
+              connection_id:
+                type: string
+              transfer_channel_id:
+                type: string
+            title: >-
+              sender: pool creater
+
+              staked_asset: liquid staking derivative needs to split into yield
+              and principle token
+
+              maturity: maturity of the pool in blockheight
+      tags:
+        - Msg
+  /orbit.split.Msg/UpdateParams:
+    post:
+      summary: |-
+        UpdateParams defines a (governance) operation for updating the module
+        parameters. The authority defaults to the x/gov module account.
+      operationId: OrbitSplitMsg_UpdateParams
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            description: >-
+              MsgUpdateParamsResponse defines the response structure for
+              executing a
+
+              MsgUpdateParams message.
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: body
+          description: MsgUpdateParams is the Msg/UpdateParams request type.
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              authority:
+                type: string
+                description: >-
+                  authority is the address that controls the module (defaults to
+                  x/gov unless overwritten).
+              params:
+                description: |-
+                  params defines the module parameters to update.
+
+                  NOTE: All parameters must be supplied.
+                type: object
+            description: MsgUpdateParams is the Msg/UpdateParams request type.
+      tags:
+        - Msg
+  /orbit.split.Msg/UpdateSplitterPoolIcaAccount:
+    post:
+      summary: query the
+      operationId: OrbitSplitMsg_UpdateSplitterPoolIcaAccount
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              creator:
+                type: string
+              pool_id:
+                type: string
+                format: uint64
+              connection_id:
+                type: string
+              account_owner:
+                type: string
+                title: account_owner is (chainId + "." + "delegate")
+      tags:
+        - Msg
 definitions:
   cosmos.auth.v1beta1.MsgUpdateParams:
     type: object
@@ -27002,3 +27202,77 @@ definitions:
     description: |-
       Version defines the versioning scheme used to negotiate the IBC verison in
       the connection handshake.
+  orbit.split.Params:
+    type: object
+    description: Params defines the parameters for the module.
+  orbit.split.QueryParamsResponse:
+    type: object
+    properties:
+      params:
+        description: params holds all the parameters of this module.
+        type: object
+    description: QueryParamsResponse is response type for the Query/Params RPC method.
+  orbit.split.MsgCreateSplitterPool:
+    type: object
+    properties:
+      creator:
+        type: string
+      maturity:
+        type: string
+        format: uint64
+      ibc_denom:
+        type: string
+      host_denom:
+        type: string
+      connection_id:
+        type: string
+      transfer_channel_id:
+        type: string
+    title: >-
+      sender: pool creater
+
+      staked_asset: liquid staking derivative needs to split into yield and
+      principle token
+
+      maturity: maturity of the pool in blockheight
+  orbit.split.MsgCreateSplitterPoolResponse:
+    type: object
+    properties:
+      pool_id:
+        type: string
+        format: uint64
+  orbit.split.MsgUpdateParams:
+    type: object
+    properties:
+      authority:
+        type: string
+        description: >-
+          authority is the address that controls the module (defaults to x/gov
+          unless overwritten).
+      params:
+        description: |-
+          params defines the module parameters to update.
+
+          NOTE: All parameters must be supplied.
+        type: object
+    description: MsgUpdateParams is the Msg/UpdateParams request type.
+  orbit.split.MsgUpdateParamsResponse:
+    type: object
+    description: |-
+      MsgUpdateParamsResponse defines the response structure for executing a
+      MsgUpdateParams message.
+  orbit.split.MsgUpdateplitterPoolAccount:
+    type: object
+    properties:
+      creator:
+        type: string
+      pool_id:
+        type: string
+        format: uint64
+      connection_id:
+        type: string
+      account_owner:
+        type: string
+        title: account_owner is (chainId + "." + "delegate")
+  orbit.split.MsgUpdateplitterPoolAccountResponse:
+    type: object
